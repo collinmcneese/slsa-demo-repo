@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest __tests__ --coverage --detectOpenHandles",
-    "ci": "jest __tests__ --coverage --detectOpenHandles",
+    "ci": "npm install ; npx jest __tests__ --coverage --detectOpenHandles",
     "build": "echo \"No build step required.\""
   },
   "repository": {
