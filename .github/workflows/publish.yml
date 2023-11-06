@@ -3,6 +3,9 @@ name: Publish
 on:
   release:
     types: [created]
+  push:
+    branches:
+      - main
 
 jobs:
   build:
@@ -24,6 +27,8 @@ jobs:
         run: npm run build --if-present --prefix js-app
 
       - name: Publish
-        run: npm publish --prefix js-app
+        run: |
+          cd js-app
+          npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
