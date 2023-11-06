@@ -1,0 +1,27 @@
+{
+  "name": "js-app",
+  "version": "1.0.0",
+  "description": "Simple JS app",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest __tests__ --coverage --detectOpenHandles"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/collinmcneese/slsa-demo-repo.git"
+  },
+  "author": "Collin McNeese <@collinmcneese>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/collinmcneese/slsa-demo-repo/issues"
+  },
+  "homepage": "https://github.com/collinmcneese/slsa-demo-repo#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "helmet": "^7.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3"
+  }
+}
