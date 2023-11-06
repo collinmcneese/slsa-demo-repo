@@ -1,0 +1,42 @@
+name: Publish
+
+on:
+  release:
+    types: [created]
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    permissions:
+      id-token: write # For signing
+      contents: read # For repo checkout.
+      actions: read # For getting workflow run info.
+    uses: slsa-framework/slsa-github-generator/.github/workflows/builder_nodejs_slsa3.yml@v1.9.0
+    with:
+      directory: js-app
+      run-scripts: "ci, test, build"
+
+  publish:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          registry-url: 'https://npm.pkg.github.com'
+
+      - name: publish
+        id: publish
+        uses: slsa-framework/slsa-github-generator/actions/nodejs/publish@v1.9.0
+        with:
+          access: public
+          node-auth-token: ${{ secrets.GITHUB_TOKEN }}
+          package-name: ${{ needs.build.outputs.package-name }}
+          package-download-name: ${{ needs.build.outputs.package-download-name }}
+          package-download-sha256: ${{ needs.build.outputs.package-download-sha256 }}
+          provenance-name: ${{ needs.build.outputs.provenance-name }}
+          provenance-download-name: ${{ needs.build.outputs.provenance-download-name }}
+          provenance-download-sha256: ${{ needs.build.outputs.provenance-download-sha256 }}
