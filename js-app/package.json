@@ -4,7 +4,9 @@
   "description": "Simple JS app",
   "main": "index.js",
   "scripts": {
-    "test": "jest __tests__ --coverage --detectOpenHandles"
+    "test": "jest __tests__ --coverage --detectOpenHandles",
+    "ci": "jest __tests__ --coverage --detectOpenHandles",
+    "build": "echo \"No build step required.\""
   },
   "repository": {
     "type": "git",
