@@ -7,7 +7,7 @@ app.use(helmet());
 const cssStyle = `
     body {
         background-color: #000000;
-        color: #ffffff;
+        color: green;
         font-family: Arial, Helvetica, sans-serif;
         font-size: 24px;
         text-align: center;
