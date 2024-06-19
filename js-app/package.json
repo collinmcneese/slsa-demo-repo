@@ -4,8 +4,8 @@
   "description": "Simple JS app",
   "main": "index.js",
   "scripts": {
-    "test": "jest __tests__ --coverage --detectOpenHandles",
-    "ci": "npm install ; npx jest __tests__ --coverage --detectOpenHandles",
+    "test": "jest __tests__ --coverage --detectOpenHandles ; eslint",
+    "ci": "npm install ; npx jest __tests__ --coverage --detectOpenHandles ; eslint",
     "build": "echo \"No build step required.\""
   },
   "repository": {
@@ -23,6 +23,8 @@
     "helmet": "^7.1.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.5.0",
+    "eslint": "^9.5.0",
     "jest": "^29.7.0",
     "supertest": "^7.0.0"
   }
